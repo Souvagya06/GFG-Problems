@@ -1,0 +1,40 @@
+class Solution:
+    def minJumps(self, arr):
+        n = len(arr)
+        if n <= 1:
+            return 0
+        
+        # If first element is 0, we can't move anywhere
+        if arr[0] == 0:
+            return -1
+        
+        # maxReach: farthest index we can reach so far
+        # step: steps we still can take in the current jump
+        # jumps: number of jumps made
+        maxReach = arr[0]
+        step = arr[0]
+        jumps = 1
+        
+        for i in range(1, n):
+            # If we've reached the end
+            if i == n - 1:
+                return jumps
+            
+            # Update maxReach
+            maxReach = max(maxReach, i + arr[i])
+            
+            # Use a step
+            step -= 1
+            
+            # If no steps remain
+            if step == 0:
+                jumps += 1
+                
+                # If current index is beyond max reachable, we cannot go further
+                if i >= maxReach:
+                    return -1
+                
+                # Re-initialize steps to the amount to reach new maxReach
+                step = maxReach - i
+        
+        return -1
