@@ -1,0 +1,13 @@
+class Solution:
+    def maxSubarraySum(self, arr):
+        # Initialize current and max sums
+        max_so_far = arr[0]
+        curr_sum = arr[0]
+        
+        # Iterate through rest of the array
+        for num in arr[1:]:
+            # Either start new subarray at num or extend existing
+            curr_sum = max(num, curr_sum + num)
+            max_so_far = max(max_so_far, curr_sum)
+        
+        return max_so_far
