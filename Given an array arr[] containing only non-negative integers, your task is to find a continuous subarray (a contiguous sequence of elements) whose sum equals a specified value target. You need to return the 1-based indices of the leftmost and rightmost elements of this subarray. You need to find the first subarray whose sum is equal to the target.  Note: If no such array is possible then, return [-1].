@@ -1,0 +1,21 @@
+class Solution:
+    def subarraySum(self, arr, target):
+        n = len(arr)
+        curr_sum = 0
+        start = 0
+        
+        for end in range(n):
+            curr_sum += arr[end]
+            
+            # Shrink window from left if sum is too big
+            while curr_sum > target and start <= end:
+                curr_sum -= arr[start]
+                start += 1
+            
+            # Check if we've hit the target
+            if curr_sum == target:
+                # Return 1-indexed positions
+                return [start + 1, end + 1]
+        
+        # If no subarray found
+        return [-1]
