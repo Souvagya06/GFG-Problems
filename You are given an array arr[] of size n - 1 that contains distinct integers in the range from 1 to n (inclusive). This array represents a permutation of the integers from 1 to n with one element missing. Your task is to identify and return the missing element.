@@ -1,0 +1,26 @@
+class Solution:
+    def missingNum(self, arr):
+        # n is the total count including the missing number
+        n = len(arr) + 1
+        
+        # expected sum of numbers from 1 to n
+        expected_sum = n * (n + 1) // 2
+        
+        # actual sum of the array
+        actual_sum = sum(arr)
+        
+        # missing number is difference
+        return expected_sum - actual_sum
+class Solution:
+    def missingNum(self, arr):
+        # n is the total count including the missing number
+        n = len(arr) + 1
+        
+        # expected sum of numbers from 1 to n
+        expected_sum = n * (n + 1) // 2
+        
+        # actual sum of the array
+        actual_sum = sum(arr)
+        
+        # missing number is difference
+        return expected_sum - actual_sum
