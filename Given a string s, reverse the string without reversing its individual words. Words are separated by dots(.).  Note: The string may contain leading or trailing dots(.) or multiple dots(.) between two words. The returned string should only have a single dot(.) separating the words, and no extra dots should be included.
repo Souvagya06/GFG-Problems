@@ -1,0 +1,13 @@
+class Solution:
+    def reverseWords(self, s):
+        # Split by dot
+        parts = s.split('.')
+        
+        # Remove empty strings (from leading/trailing dots)
+        words = [word for word in parts if word != '']
+        
+        # Reverse words
+        words.reverse()
+        
+        # Join back with dot
+        return '.'.join(words)
