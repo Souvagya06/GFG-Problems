@@ -1,0 +1,19 @@
+class Solution:
+    def isBalanced(self, s):
+        stack = []
+        mapping = {')':'(', '}':'{', ']':'['}
+        
+        for ch in s:
+            # if it's an opening bracket, push to stack
+            if ch in mapping.values():
+                stack.append(ch)
+            else:
+                # if it's a closing bracket
+                if not stack:
+                    return False
+                top = stack.pop()
+                if mapping.get(ch) != top:
+                    return False
+        
+        # if any unmatched opening left
+        return len(stack) == 0
