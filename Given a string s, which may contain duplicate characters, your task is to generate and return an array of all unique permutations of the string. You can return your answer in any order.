@@ -1,0 +1,26 @@
+class Solution:
+    def findPermutation(self, s):
+        # Helper backtracking function
+        def backtrack(path, used):
+            if len(path) == len(chars):
+                result.append("".join(path))
+                return
+            for i in range(len(chars)):
+                if used[i]:
+                    continue
+                # Skip duplicates
+                if i > 0 and chars[i] == chars[i-1] and not used[i-1]:
+                    continue
+                used[i] = True
+                path.append(chars[i])
+                backtrack(path, used)
+                path.pop()
+                used[i] = False
+
+        # Sort characters so permutations are in lexicographic order
+        chars = sorted(s)
+        result = []
+        used = [False] * len(chars)
+
+        backtrack([], used)
+        return result
