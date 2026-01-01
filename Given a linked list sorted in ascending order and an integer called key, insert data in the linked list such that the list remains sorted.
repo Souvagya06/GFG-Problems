@@ -1,0 +1,20 @@
+class Solution:
+    def sortedInsert(self, head, key):
+        new_node = Node(key)
+        
+        # If list is empty or key must be new head
+        if not head or key < head.data:
+            new_node.next = head
+            return new_node
+        
+        current = head
+        
+        # Find the correct position to insert
+        while current.next and current.next.data < key:
+            current = current.next
+        
+        # Insert new_node
+        new_node.next = current.next
+        current.next = new_node
+        
+        return head
