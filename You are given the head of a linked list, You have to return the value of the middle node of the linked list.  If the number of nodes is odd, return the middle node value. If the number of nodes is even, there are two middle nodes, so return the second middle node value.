@@ -1,0 +1,15 @@
+class Solution:
+    def getMiddle(self, head):
+        # If the list is empty
+        if head is None:
+            return -1
+        
+        slow = head
+        fast = head
+        
+        # Move fast by 2 and slow by 1
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+        
+        return slow.data
