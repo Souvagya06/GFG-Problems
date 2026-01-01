@@ -1,0 +1,36 @@
+class Solution:
+    def addOne(self, head):
+        # Helper to reverse a linked list
+        def reverse(node):
+            prev = None
+            curr = node
+            while curr:
+                nxt = curr.next
+                curr.next = prev
+                prev = curr
+                curr = nxt
+            return prev
+        
+        # Reverse the list
+        head = reverse(head)
+        
+        carry = 1
+        curr = head
+        
+        while curr:
+            curr.data += carry
+            carry = curr.data // 10
+            curr.data = curr.data % 10
+            
+            # Stop early if no carry
+            if carry == 0:
+                break
+            
+            # Move next
+            if curr.next is None and carry != 0:
+                curr.next = Node(0)
+            curr = curr.next
+        
+        # Reverse back
+        head = reverse(head)
+        return head
