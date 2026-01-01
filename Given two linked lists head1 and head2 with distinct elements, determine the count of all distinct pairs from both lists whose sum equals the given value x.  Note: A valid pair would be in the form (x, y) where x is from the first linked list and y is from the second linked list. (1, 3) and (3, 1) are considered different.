@@ -1,0 +1,20 @@
+class Solution:
+    def countPairs(self, head1, head2, x):
+        # Collect values from first list
+        values = set()
+        curr1 = head1
+        
+        while curr1:
+            values.add(curr1.data)
+            curr1 = curr1.next
+        
+        # Count matching pairs with second list
+        count = 0
+        curr2 = head2
+        
+        while curr2:
+            if (x - curr2.data) in values:
+                count += 1
+            curr2 = curr2.next
+        
+        return count
